@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2019 Tacoma V6 – Under-Hood Fuse Box (matches lid)</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d2320;--mut:#66706b;--line:#dcd8cf;--acc:#d63a2f}
+@media(prefers-color-scheme:dark){:root{--bg:#15181a;--card:#1f2326;--ink:#ecebe6;--mut:#9aa39e;--line:#343a3d;--acc:#ef6a5f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:0}.sub,.note{color:var(--mut)}.note{font-size:.82rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.ctl{display:flex;flex-wrap:wrap;gap:8px}
+input,select,textarea{padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input{flex:1;min-width:180px}textarea{width:100%}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px;align-items:start}
+#det{position:sticky;top:8px;border-left:4px solid var(--acc)}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}#det{order:-1;position:static}}
+#det h2{margin:0 0 4px;font-size:1.15rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 8px;margin:2px 6px 2px 0;font-size:.8rem}
+.tbl{margin:8px 0;padding:8px 10px;background:var(--bg);border-radius:8px;font-size:.9rem}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.seg button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sc{overflow-x:auto;border-radius:14px;border:3px solid #111;background:#2b2f31}
+svg{display:block;width:100%;min-width:760px;height:auto}
+.sl{cursor:pointer}.sl:focus{outline:none}
+.sl rect.b{fill:#33393c;stroke:#c9ceca;stroke-width:2}
+.sl:hover rect.b{stroke:#fff;stroke-width:3}
+.sl.on rect.b{stroke:var(--acc);stroke-width:5;fill:#4a3230}
+.sl.dim{opacity:.15}
+.sl text{fill:#e8e6e0;font-family:system-ui,sans-serif;pointer-events:none}
+.sl.emp rect.b{fill:none;stroke:#7d8588;stroke-dasharray:6 5}
+.sl.emp{cursor:default}
+</style></head><body><main>
+<h1>2019 Toyota Tacoma V6 — Under-Hood Fuse Box</h1>
+<p class="sub">Drawn to match the diagram on your fuse box lid · tap any slot</p>
+<div class="card"><div class="ctl">
+<input id="q" type="search" placeholder="Search: horn, wiper, headlight, 10A…" aria-label="Search">
+<select id="sf" aria-label="Status filter"><option value="">Any status</option><option value="n">Not checked</option><option value="o">Original</option><option value="r">Replaced</option></select></div>
+<p class="note" id="prog" style="margin:8px 0 0"></p></div>
+<div class="wrap">
+<div><div class="sc"><svg id="svg" viewBox="175 490 1220 1400" role="img" aria-label="Fuse box layout"></svg></div>
+<p class="note" style="margin-top:10px"><b>Reading the lid:</b> small outlines are short mini blade fuses; large outlines are tall cartridge (J-Case) fuses; the biggest are bolt-in links. A slashed dashed box is an unused slot. Everything here follows the lid photo, which differs slightly from some online lists. The lid says to use the designated fuse only, so confirm against your lid and owner's manual before replacing anything, and always match the amp rating and type.</p></div>
+<div class="card" id="det"><h2>Select a slot</h2><span class="note">It shows what it does, where it is, and whether it's a short or tall type.</span></div>
+</div>
+</main>
+<script>
+const GR={A0:["Left block, top (main power links)","y"],A1:["Left block, left column","y"],A2:["Left block, middle column","y"],A3:["Left block, right column","y"],A4:["Left block, bottom row","x"],B1:["Upper-right block, top row","x"],B2:["Upper-right block, bottom row","x"],C1:["Center relay block, left column","y"],C2:["Center relay block, middle column","y"],C3:["Center relay block, right column","y"],D1:["Bottom relay block, top row","x"],D2:["Bottom relay block, bottom row","x"],E1:["Right side of the lid","y"]};
+const RAW=`A0|J/B-ALT|120|L|290|575|118|62|Main power feed to the junction block
+A0|ALT|140|L|286|720|118|62|Alternator / charging system feed
+A1|AM2 NO.1|30|J|230|848|105|62|Starter system
+A1|RADIO NO.2|30|J|226|922|108|62|Radio / audio system
+A1|RADIO NO.3|30|J|226|993|108|62|Radio / audio system
+A1|-|0|J|224|1065|108|65|
+A1|D INJ|20|M|222|1150|112|52|Direct injection
+A1|HORN|10|M|222|1208|112|52|Horn
+A1|DIMMER|20|M|222|1266|112|52|Instrument panel lights
+A1|EFI NO.1|10|M|222|1324|112|52|Multiport fuel injection
+A1|EFI-MAIN|30|M|222|1382|112|52|Fuel injection (main)
+A1|S-HORN|10|M|222|1440|112|52|Horn / anti-theft
+A1|H-LP LO|15|M|222|1498|112|52|Headlights, low beam
+A1|BKUP LP NO.2|10|M|222|1570|112|52|Backup lights
+A1|H-LP LH-LO|10|M|222|1640|112|52|Left headlight, low beam
+A1|H-LP RH-LO|10|M|222|1698|112|52|Right headlight, low beam
+A4|ECU-B NO.2|10|M|222|1768|70|82|Engine control unit
+A4|ECU-B NO.3|10|M|298|1768|70|82|Engine control unit
+A4|ECU-B NO.1|10|M|372|1768|70|82|Engine control unit
+A2|ABS NO.1|50|J|352|890|108|62|Anti-lock brakes
+A2|J/B-B|50|J|352|963|108|62|Junction box bus
+A2|ABS NO.2|30|J|352|1035|108|62|Anti-lock brakes
+A2|TOWING|25|M|365|1110|92|52|Trailer lights
+A2|ETCS|10|M|365|1168|92|52|Electronic throttle control system
+A2|-|0|M|368|1226|92|32|
+A2|EFI NO.2|20|M|362|1281|92|52|Multiport fuel injection
+A2|-|0|M|368|1340|92|32|
+A2|STOP|10|M|365|1398|92|52|Stop / brake lights
+A2|A/F HTR|20|M|362|1458|100|52|Air-fuel ratio sensor heater
+A2|IG2-MAIN|20|M|358|1516|104|52|Ignition feed, several circuits
+A2|-|0|M|362|1575|80|32|
+A2|SHORT PIN|0|S|340|1633|105|42|Shunt pin (service use)
+A2|RADIO NO.1|20|M|338|1690|118|52|Radio / audio system
+A3|HTR|50|J|487|892|108|62|Heater / A/C
+A3|PTC HTR NO.1|50|J|487|963|108|62|Additional (PTC) heater
+A3|-|0|J|484|1035|108|62|
+A3|PTC HTR NO.3|30|J|484|1107|108|62|Additional (PTC) heater
+A3|TOWING TAIL|30|M|486|1196|108|52|Trailer lights
+A3|WASH NO.2|20|M|486|1254|108|52|Windshield washer
+A3|MIR HTR|15|M|486|1312|108|52|Mirror heaters
+A3|DRL|10|M|486|1372|108|52|Daytime running lights
+A3|FOG FR|15|M|486|1432|108|52|Front fog lights
+B1|INJ|10|Mv|476|540|46|110|Fuel injectors
+B1|INV|80|P|535|635|95|130|Power outlet (DC/AC inverter)
+B1|-|0|J|655|525|95|130|
+B1|BATT CHG|40|J|770|528|95|130|Battery / charging system
+B1|-|0|J|892|530|95|130|
+B1|H-LP LH-HI|10|Mv|1008|550|50|110|Left headlight, high beam
+B1|A/C|10|Mv|1078|552|50|110|Air conditioning
+B2|EFI NO.3|10|Mv|474|712|56|120|Multiport fuel injection
+B2|BKUP LP NO.1|15|Mv|678|720|56|112|Backup lights
+B2|PTC HTR NO.2|30|J|768|703|95|130|Additional (PTC) heater
+B2|TOWING BRK NO.1|40|J|890|705|95|130|Trailer brakes
+B2|H-LP RH-HI|10|Mv|1008|728|54|114|Right headlight, high beam
+B2|EFI NO.4|15|Mv|1078|728|56|114|Multiport fuel injection
+C1|EFI-MAIN NO.2|0|R|705|955|120|62|Fuel injection relay
+C1|MG CLT|0|R|705|1070|118|62|A/C magnetic clutch relay
+C1|PTC HTR NO.3|0|R|702|1185|118|144|Additional heater relay
+C1|S-HORN|0|R|700|1390|115|65|Horn / anti-theft relay
+C2|PTC HTR NO.1|0|R|870|942|92|128|Additional heater relay
+C2|PTC HTR NO.2|0|R|865|1135|95|128|Additional heater relay
+C2|DIMMER|0|R|865|1325|95|130|Instrument panel lights relay
+C3|H-LP LO|0|R|1012|1027|95|128|Low beam headlight relay
+C3|HTR|0|R|1012|1215|95|128|Heater / A/C relay
+C3|STOP|0|R|1000|1392|115|63|Stop light relay
+D1|A/F HTR|0|R|515|1538|120|102|Air-fuel sensor heater relay
+D1|IG2-MAIN|0|R|667|1538|118|102|Ignition feed relay
+D1|BKUP LP|0|R|833|1538|118|102|Backup light relay
+D1|D INJ|0|R|988|1538|116|102|Direct injection relay
+D2|FOG FR|0|R|527|1682|94|130|Front fog light relay
+D2|ST|0|R|647|1682|94|130|Starter relay
+D2|EFI-MAIN NO.1|0|R|767|1682|94|130|Fuel injection relay
+D2|HORN|0|R|886|1682|94|130|Horn relay
+D2|TOWING TAIL|0|R|997|1682|110|130|Trailer light relay
+E1|SPARE FUSE|0|X|1200|1215|170|300|Spare fuse holder. A spare mini fuse is stored here.
+E1|FUSE PULLER|0|X|1215|1570|145|290|Plastic puller. Use it to pull mini fuses straight out.`;
+const S=RAW.split("\n").map((l,i)=>{const[g,nm,a,t,x,y,w,h,d]=l.split("|");const v=t.endsWith("v");return{i,g,name:nm==="-"?"":nm,amp:+a,t:t[0],v,x:+x,y:+y,w:+w,h:+h,d,e:nm==="-"}});
+const COL={10:"#e0403a",15:"#5aa8ee",20:"#f2d13a",25:"#e9e9e4",30:"#5cbd63",40:"#f0902f",50:"#e0403a",80:"#e9e9e4",120:"#e9e9e4",140:"#e9e9e4"};
+const TI={M:["Short","Mini blade: the small, short plastic blade fuse. On your lid these have the small outlines."],
+J:["Tall","Cartridge (J-Case): a taller, boxy fuse. On your lid these have the large outlines. A mini blade will not substitute."],
+L:["Largest","Fusible link: a big bolt-in style fuse for the main feed. Replace only with the exact same part."],
+P:["Largest","High-current 80A cartridge for the inverter circuit. Replace only with the exact same part."],
+S:["Short pin","Shunt pin: a small jumper, not a fuse. It stays in place unless a service procedure calls for removing it."],
+R:["Relay","Relay: a square plug-in switch, not a fuse. Swap only with the identical relay."],
+X:["Accessory","Stored on the lid, not part of the fuse circuits."]};
+const LIDONLY=["RADIO NO.3","WASH NO.2","ETCS"];
+// position text
+const ord=n=>n+(["th","st","nd","rd"][n%100>10&&n%100<14?0:n%10<4?n%10:0]);
+S.forEach(s=>{const grp=S.filter(o=>o.g===s.g).sort((a,b)=>GR[s.g][1]==="y"?a.y-b.y:a.x-b.x);const n=grp.indexOf(s)+1;
+ s.where=s.g==="A0"?GR.A0[0]+", "+ord(n)+" from top":s.g==="E1"?GR.E1[0]:GR[s.g][0]+", "+ord(n)+" from "+(GR[s.g][1]==="y"?"top":"left")+" (counting unused slots)"});
+const $=id=>document.getElementById(id);
+let ST={},sel=null;
+try{ST=JSON.parse(localStorage.getItem("tacoma-lid-check-v1")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("tacoma-lid-check-v1",JSON.stringify(ST))}catch(e){}};
+const trk=s=>"MJLP".includes(s.t)&&!s.e, gs=s=>(ST[s.i]&&ST[s.i].s)||"";
+const SL={"":"Not checked",o:"Original",r:"Replaced"};
+function lines(nm){return nm.length>9&&nm.includes(" ")?[nm.slice(0,nm.lastIndexOf(" ")),nm.slice(nm.lastIndexOf(" ")+1)]:[nm]}
+function draw(){
+ let h=`<rect x="175" y="490" width="1220" height="1400" fill="#2b2f31"/>`;
+ const P="fill='none' stroke='#8a9297' stroke-width='2'";
+ h+=`<polygon ${P} points="215,500 433,500 433,880 613,880 613,1493 450,1493 450,1852 187,1852"/><rect ${P} x="455" y="505" width="695" height="350"/><polygon ${P} points="628,880 1010,885 1060,990 1143,990 1143,1493 620,1493"/><rect ${P} x="470" y="1515" width="665" height="330"/><rect ${P} x="1185" y="1128" width="185" height="765" fill="#23272a"/>`;
+ S.forEach(s=>{
+  const st=gs(s);let inner="";
+  if(s.e)inner=`<line x1="${s.x+8}" y1="${s.y+s.h-8}" x2="${s.x+s.w-8}" y2="${s.y+8}" stroke="#7d8588" stroke-width="3"/>`;
+  else{
+   const cx=s.x+s.w/2,cy=s.y+s.h/2;
+   if(s.v){const t=(s.amp?s.amp+"A  ":"")+s.name,fs=Math.max(13,Math.min(20,(s.h-10)/(t.length*.6)));
+    inner=`<text transform="translate(${cx+fs*.35},${cy}) rotate(-90)" text-anchor="middle" font-size="${fs}">${t}</text>`}
+   else{const L=lines(s.name),fs=Math.max(13,Math.min(21,(s.w-14)/(Math.max(...L.map(x=>x.length))*.62))),lh=fs*1.15,n=L.length+(s.amp?1:0);
+    let y0=cy-(n-1)*lh/2+fs*.35;
+    if(s.amp){inner+=`<text x="${cx}" y="${y0}" text-anchor="middle" font-size="${fs*1.15}" font-weight="700">${s.amp}A</text>`;y0+=lh}
+    L.forEach((x,k)=>inner+=`<text x="${cx}" y="${y0+k*lh}" text-anchor="middle" font-size="${fs}">${x}</text>`)}
+   if(COL[s.amp]&&trk(s))inner+=`<rect x="${s.x+2}" y="${s.y+2}" width="7" height="${s.h-4}" rx="3" fill="${COL[s.amp]}" style="fill:${COL[s.amp]}"/>`;
+   if(st)inner+=`<text x="${s.x+s.w-4}" y="${s.y+18}" text-anchor="end" font-size="17">${st==="o"?"✅":"🔧"}</text>`}
+  h+=`<g class="sl${s.e?" emp":""}" data-i="${s.i}" ${s.e?"":`tabindex="0" role="button" aria-label="${s.name} ${s.amp?s.amp+' amp':''}"`}><rect class="b" x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" rx="7"/>${inner}</g>`});
+ $("svg").innerHTML=h;paint()}
+function paint(){
+ const q=$("q").value.trim().toLowerCase(),f=$("sf").value;
+ document.querySelectorAll(".sl").forEach(g=>{const s=S[g.dataset.i],st=gs(s);
+  const hit=(!q||(s.name+" "+s.d+" "+s.amp+"a").toLowerCase().includes(q))&&(!f||(f==="n"?trk(s)&&!st:st===f));
+  g.classList.toggle("dim",!hit&&!s.e);g.classList.toggle("on",sel===s.i)});
+ const fu=S.filter(trk);$("prog").textContent=`Checked ${fu.filter(s=>gs(s)).length} of ${fu.length} fuses · ${fu.filter(s=>gs(s)==="r").length} marked replaced`}
+function show(s){
+ const e=ST[s.i]||{},[sz,tx]=TI[s.t];
+ $("det").innerHTML=s.e?`<h2>Unused slot</h2><p>The lid marks this slot as unused, so nothing is installed here.</p><div class="tbl"><b>Where:</b> ${s.where}</div>`:
+ `<h2>${s.name}</h2><p style="margin:2px 0 6px">${s.d}</p><span class="tag">${s.amp?s.amp+" A":TI[s.t][0]}</span>${s.amp?`<span class="tag">${sz}</span>`:""}
+ <div class="tbl"><b>Where:</b> ${s.where}.</div><div class="tbl"><b>Size:</b> ${tx}</div>
+ ${LIDONLY.includes(s.name)?`<div class="tbl">This one comes from your lid photo; some online lists leave it out. Its size is judged from the outline drawn on the lid.</div>`:""}
+ ${trk(s)?`<div class="seg">${Object.entries(SL).map(([k,t])=>`<button data-s="${k}" class="${(e.s||"")===k?"on":""}">${t}</button>`).join("")}</div><textarea id="nt" rows="2" placeholder="Notes: brand, color, looks aftermarket?">${e.t||""}</textarea>`:""}`;
+ if(trk(s)){const set=(k,v)=>{ST[s.i]=Object.assign({},ST[s.i],{[k]:v});save()};
+  $("det").querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{set("s",b.dataset.s);show(s);draw()});$("nt").oninput=e=>set("t",e.target.value)}}
+function pick(g){if(!g)return;const s=S[g.dataset.i];if(s.e){sel=s.i;show(s);paint();return}sel=s.i;show(s);paint();$("det").scrollIntoView({behavior:"smooth",block:"nearest"})}
+$("svg").addEventListener("click",e=>pick(e.target.closest(".sl")));
+$("svg").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(e.target.closest(".sl"))}});
+$("q").oninput=paint;$("sf").onchange=paint;draw();
+</script></body></html>
