@@ -1,0 +1,29 @@
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d2320;--mut:#66706b;--line:#dcd8cf;--acc:#d63a2f}
+@media(prefers-color-scheme:dark){:root{--bg:#15181a;--card:#1f2326;--ink:#ecebe6;--mut:#9aa39e;--line:#343a3d;--acc:#ef6a5f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:0}.sub,.note{color:var(--mut)}.note{font-size:.82rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.ctl{display:flex;flex-wrap:wrap;gap:8px}
+input,select,textarea{padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input{flex:1;min-width:180px}textarea{width:100%}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px;align-items:start}
+#det{position:sticky;top:8px;border-left:4px solid var(--acc)}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}#det{order:-1;position:static}}
+#det h2{margin:0 0 4px;font-size:1.15rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 8px;margin:2px 6px 2px 0;font-size:.8rem}
+.tbl{margin:8px 0;padding:8px 10px;background:var(--bg);border-radius:8px;font-size:.9rem}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.seg button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sc{overflow-x:auto;border-radius:14px;border:3px solid #111;background:#2b2f31}
+svg{display:block;width:100%;min-width:760px;height:auto}
+.sl{cursor:pointer}.sl:focus{outline:none}
+.sl rect.b{fill:#33393c;stroke:#c9ceca;stroke-width:2}
+.sl:hover rect.b{stroke:#fff;stroke-width:3}
+.sl.on rect.b{stroke:var(--acc);stroke-width:5;fill:#4a3230}
+.sl.dim{opacity:.15}
+.sl text{fill:#e8e6e0;font-family:system-ui,sans-serif;pointer-events:none}
+.sl.emp rect.b{fill:none;stroke:#7d8588;stroke-dasharray:6 5}
+.sl.emp{cursor:default}
